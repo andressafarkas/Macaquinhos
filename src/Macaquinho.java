@@ -22,7 +22,7 @@ public class Macaquinho
         this.cocos.add(coco);
     }
 
-    public void jogar()
+    public void jogarCocos()
     {
         for (Coco coco : cocos)
         {
@@ -37,12 +37,12 @@ public class Macaquinho
         cocos.clear();
     }
 
-    public int getTotalCocos()
+    public int getNumCocos()
     {
         return cocos.size();
     }
 
-    public int getMacaquinhoIdId()
+    public int getMacaquinhoId()
     {
         return macaquinhoId;
     }
