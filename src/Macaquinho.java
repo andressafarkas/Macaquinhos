@@ -9,12 +9,12 @@ public class Macaquinho
     private Macaquinho macaquinhoPar;
     private Macaquinho macaquinhoImpar;
 
-    public Macaquinho(List<Coco> cocos, int macaquinhoId, Macaquinho macacoPar, Macaquinho macacoImpar)
+    public Macaquinho(List<Coco> cocos, int macaquinhoId, Macaquinho macaquinhoPar, Macaquinho macaquinhoImpar)
     {
         this.cocos = new ArrayList<>(20);
         this.macaquinhoId = macaquinhoId;
-        this.macaquinhoPar = macacoPar;
-        this.macaquinhoImpar = macacoImpar;
+        this.macaquinhoPar = macaquinhoPar;
+        this.macaquinhoImpar = macaquinhoImpar;
     }
 
     public void receberCoco(Coco coco)
@@ -67,6 +67,14 @@ public class Macaquinho
         this.macaquinhoImpar = macaquinhoImpar;
     }
 
-
-
+    @Override
+    public String toString()
+    {
+        return "Macaquinho{" +
+                "cocos=" + cocos +
+                ", macaquinhoId=" + macaquinhoId +
+                ", macaquinhoPar=" + macaquinhoPar +
+                ", macaquinhoImpar=" + macaquinhoImpar +
+                '}';
+    }
 }
