@@ -56,25 +56,4 @@ public class Macaquinho
     {
         return macaquinhoId;
     }
-
-    public void setMacaquinhoPar(Macaquinho macaquinhoPar)
-    {
-        this.macaquinhoPar = macaquinhoPar;
-    }
-
-    public void setMacaquinhoImpar(Macaquinho macaquinhoImpar)
-    {
-        this.macaquinhoImpar = macaquinhoImpar;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "Macaquinho{" +
-                "cocos=" + cocos +
-                ", macaquinhoId=" + macaquinhoId +
-                ", macaquinhoPar=" + macaquinhoPar +
-                ", macaquinhoImpar=" + macaquinhoImpar +
-                '}';
-    }
 }
