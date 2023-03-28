@@ -14,7 +14,7 @@ public class Macaquinho
 
     public Macaquinho(List<Coco> cocos, int macaquinhoId, int macaquinhoParId, int macaquinhoImparId)
     {
-        this.cocos = new ArrayList<>(20);
+        this.cocos = cocos;
         this.macaquinhoId = macaquinhoId;
         this.macaquinhoParId = macaquinhoParId;
         this.macaquinhoImparId = macaquinhoImparId;
