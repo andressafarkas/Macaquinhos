@@ -7,14 +7,17 @@ public class Macaquinho
     private List<Coco> cocos;
     private final int macaquinhoId;
     private Macaquinho macaquinhoPar;
+    private int macaquinhoParId;
     private Macaquinho macaquinhoImpar;
+    private int macaquinhoImparId;
 
-    public Macaquinho(List<Coco> cocos, int macaquinhoId, Macaquinho macaquinhoPar, Macaquinho macaquinhoImpar)
+
+    public Macaquinho(List<Coco> cocos, int macaquinhoId, int macaquinhoParId, int macaquinhoImparId)
     {
         this.cocos = new ArrayList<>(20);
         this.macaquinhoId = macaquinhoId;
-        this.macaquinhoPar = macaquinhoPar;
-        this.macaquinhoImpar = macaquinhoImpar;
+        this.macaquinhoParId = macaquinhoParId;
+        this.macaquinhoImparId = macaquinhoImparId;
     }
 
     public void receberCoco(Coco coco)
@@ -55,5 +58,33 @@ public class Macaquinho
     public int getMacaquinhoId()
     {
         return macaquinhoId;
+    }
+
+    public void setMacaquinhoPar(Macaquinho macaquinhoPar) {
+        this.macaquinhoPar = macaquinhoPar;
+    }
+
+    public void setMacaquinhoImpar(Macaquinho macaquinhoImpar) {
+        this.macaquinhoImpar = macaquinhoImpar;
+    }
+
+    public List<Coco> getCocos() {
+        return cocos;
+    }
+
+    public Macaquinho getMacaquinhoPar() {
+        return macaquinhoPar;
+    }
+
+    public int getMacaquinhoParId() {
+        return macaquinhoParId;
+    }
+
+    public Macaquinho getMacaquinhoImpar() {
+        return macaquinhoImpar;
+    }
+
+    public int getMacaquinhoImparId() {
+        return macaquinhoImparId;
     }
 }

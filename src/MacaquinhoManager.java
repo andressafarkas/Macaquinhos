@@ -76,7 +76,13 @@ public class MacaquinhoManager
             }
 
             System.out.println("Macaquinho " + idMacaco + " distribui " + numCocos + " cocos entre macaquinho " + idMacaquinhoPar + " e macaquinho " + idMacaquinhoImpar);
-            macaquinhos.add(new Macaquinho(cocos, idMacaco, getMacaquinhoById(idMacaquinhoPar), getMacaquinhoById(idMacaquinhoImpar)));
+            macaquinhos.add(new Macaquinho(cocos, idMacaco, idMacaquinhoPar, idMacaquinhoImpar));
+
+        }
+        for (Macaquinho macaquinho: macaquinhos)
+        {
+            macaquinho.setMacaquinhoPar(getMacaquinhoById(macaquinho.getMacaquinhoParId()));
+            macaquinho.setMacaquinhoImpar(getMacaquinhoById(macaquinho.getMacaquinhoImparId()));
         }
 
     }
