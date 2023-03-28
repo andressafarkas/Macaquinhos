@@ -78,5 +78,34 @@ public class MacaquinhoManager
             System.out.println("Macaquinho " + idMacaco + " distribui " + numCocos + " cocos entre macaquinho " + idMacaquinhoPar + " e macaquinho " + idMacaquinhoImpar);
             macaquinhos.add(new Macaquinho(cocos, idMacaco, getMacaquinhoById(idMacaquinhoPar), getMacaquinhoById(idMacaquinhoImpar)));
         }
+
+    }
+        public Macaquinho getVencedor()
+        {
+            int maxPedrinhas = macaquinhos.get(0).getNumPedrinhas();
+            for (Macaquinho macaquinho: macaquinhos)
+            {
+                if (macaquinho.getNumPedrinhas() > maxPedrinhas)
+                {
+                    maxPedrinhas = macaquinho.getNumPedrinhas();
+                }
+            }
+
+            for (Macaquinho macaquinho: macaquinhos)
+            {
+                if (macaquinho.getNumPedrinhas() == maxPedrinhas) return macaquinho;
+            }
+
+            return macaquinhos.get(0);
+        }
+
+    public int getNumRodadas()
+    {
+        return numRodadas;
+    }
+
+    public List<Macaquinho> getMacaquinhos()
+    {
+        return macaquinhos;
     }
 }
