@@ -4,7 +4,7 @@ import java.util.List;
 public class Macaquinho
 {
 
-    private List<Coco> cocos;
+    private final List<Coco> cocos;
     private final int macaquinhoId;
     private Macaquinho macaquinhoPar;
     private int macaquinhoParId;
@@ -27,10 +27,10 @@ public class Macaquinho
 
     public void jogarCocos()
     {
-        for (Coco coco : cocos)
-        {
-            if (coco.getPedrinhas() % 2 == 0)
-            {
+        int size = getNumCocos();
+        for (int i = 0; i < size; i++) {
+            Coco coco = cocos.get(i);
+            if (coco.getPedrinhas() % 2 == 0) {
                 macaquinhoPar.receberCoco(coco);
             } else
             {

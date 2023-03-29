@@ -1,14 +1,14 @@
+import jdk.jshell.execution.Util;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MacaquinhoManager
 {
-    private List<Macaquinho> macaquinhos;
+    private final List<Macaquinho> macaquinhos;
 
     private int numRodadas;
 
@@ -29,10 +29,11 @@ public class MacaquinhoManager
         return null;
     }
 
-    public void jogarCocos()
+    public void distribuirCocos()
     {
-        for (Macaquinho macaquinho : macaquinhos)
-        {
+        int size = macaquinhos.size();
+        for (int i = 0, macaquinhosSize = size; i < macaquinhosSize; i++) {
+            Macaquinho macaquinho = macaquinhos.get(i);
             macaquinho.jogarCocos();
         }
     }
@@ -44,7 +45,7 @@ public class MacaquinhoManager
         File file = new File(caminhoArquivoComExtensao);
         Scanner scanner = new Scanner(file);
 
-        List<String> inputText = new ArrayList<>(10);
+        List<String> inputText = new ArrayList<>();
 
 
         String linhaNumRodadas;
@@ -76,7 +77,8 @@ public class MacaquinhoManager
             }
 
             System.out.println("Macaquinho " + idMacaco + " distribui " + numCocos + " cocos entre macaquinho " + idMacaquinhoPar + " e macaquinho " + idMacaquinhoImpar);
-            macaquinhos.add(new Macaquinho(cocos, idMacaco, idMacaquinhoPar, idMacaquinhoImpar));
+            macaquinhos.add(new Macaquinho(Utils.clone(cocos), idMacaco, idMacaquinhoPar, idMacaquinhoImpar));
+            cocos.clear();
 
         }
         for (Macaquinho macaquinho: macaquinhos)
@@ -88,21 +90,7 @@ public class MacaquinhoManager
     }
         public Macaquinho getVencedor()
         {
-            int maxPedrinhas = macaquinhos.get(0).getNumPedrinhas();
-            for (Macaquinho macaquinho: macaquinhos)
-            {
-                if (macaquinho.getNumPedrinhas() > maxPedrinhas)
-                {
-                    maxPedrinhas = macaquinho.getNumPedrinhas();
-                }
-            }
-
-            for (Macaquinho macaquinho: macaquinhos)
-            {
-                if (macaquinho.getNumPedrinhas() == maxPedrinhas) return macaquinho;
-            }
-
-            return macaquinhos.get(0);
+            return Collections.max(macaquinhos, Comparator.comparing(Macaquinho::getNumPedrinhas));
         }
 
     public int getNumRodadas()
