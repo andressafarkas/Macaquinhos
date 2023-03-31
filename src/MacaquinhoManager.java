@@ -1,4 +1,3 @@
-import jdk.jshell.execution.Util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,7 +31,7 @@ public class MacaquinhoManager
     public void distribuirCocos()
     {
         int size = macaquinhos.size();
-        for (int i = 0, macaquinhosSize = size; i < macaquinhosSize; i++) {
+        for (int i = 0; i < size; i++) {
             Macaquinho macaquinho = macaquinhos.get(i);
             macaquinho.jogarCocos();
         }
