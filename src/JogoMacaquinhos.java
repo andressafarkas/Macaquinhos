@@ -1,13 +1,13 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
-
+ 
 public class JogoMacaquinhos
 {
-
-    public static void main(String[] args) throws FileNotFoundException
+    public static void main(String[] args) throws IOException
     {
         MacaquinhoManager macaquinhoManager = new MacaquinhoManager();
-        macaquinhoManager.lerArquivo("0050macacos.txt");
+        macaquinhoManager.lerArquivo("files/1000macacos.txt");
 
         for (int i = 0; i < macaquinhoManager.getNumRodadas(); i++) 
         {
