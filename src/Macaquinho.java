@@ -45,16 +45,6 @@ public class Macaquinho
         return cocos.size();
     }
 
-    public int getNumPedrinhas()
-    {
-        int pedrinhas = 0;
-        for (Coco coco: cocos)
-        {
-            pedrinhas += coco.getPedrinhas();
-        }
-        return pedrinhas;
-    }
-
     public int getMacaquinhoId()
     {
         return macaquinhoId;

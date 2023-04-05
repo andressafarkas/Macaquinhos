@@ -89,7 +89,7 @@ public class MacaquinhoManager
     }
         public Macaquinho getVencedor()
         {
-            return Collections.max(macaquinhos, Comparator.comparing(Macaquinho::getNumPedrinhas));
+            return Collections.max(macaquinhos, Comparator.comparing(Macaquinho::getNumCocos));
         }
 
     public int getNumRodadas()
