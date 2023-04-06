@@ -1,9 +1,13 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Macaquinho
 {
 
-    private final List<Coco> cocos;
+    private int numCocos;
+
+    private List<Boolean> cocos;
+
     private final int macaquinhoId;
     private Macaquinho macaquinhoPar;
     private int macaquinhoParId;
@@ -11,7 +15,7 @@ public class Macaquinho
     private int macaquinhoImparId;
 
 
-    public Macaquinho(List<Coco> cocos, int macaquinhoId, int macaquinhoParId, int macaquinhoImparId)
+    public Macaquinho(List<Boolean> cocos, int macaquinhoId, int macaquinhoParId, int macaquinhoImparId)
     {
         this.cocos = cocos;
         this.macaquinhoId = macaquinhoId;
@@ -19,21 +23,24 @@ public class Macaquinho
         this.macaquinhoImparId = macaquinhoImparId;
     }
 
-    public void receberCoco(Coco coco)
+    public void receberCoco(Boolean coco)
     {
-        this.cocos.add(coco);
+        cocos.add(coco);
     }
 
     public void jogarCocos()
     {
-        int size = getNumCocos();
-        for (int i = 0; i < size; i++) {
-            Coco coco = cocos.get(i);
-            if (coco.getPedrinhas() % 2 == 0) {
-                macaquinhoPar.receberCoco(coco);
+        int size = cocos.size();
+        Boolean choice;
+        for (int i = 0; i < size; i++)
+        {
+            choice = cocos.get(i);
+
+            if (choice) {
+                macaquinhoPar.receberCoco(choice);
             } else
             {
-                macaquinhoImpar.receberCoco(coco);
+                macaquinhoImpar.receberCoco(choice);
             }
         }
         cocos.clear();
@@ -57,21 +64,11 @@ public class Macaquinho
         this.macaquinhoImpar = macaquinhoImpar;
     }
 
-    public List<Coco> getCocos() {
-        return cocos;
-    }
-
-    public Macaquinho getMacaquinhoPar() {
-        return macaquinhoPar;
-    }
 
     public int getMacaquinhoParId() {
         return macaquinhoParId;
     }
 
-    public Macaquinho getMacaquinhoImpar() {
-        return macaquinhoImpar;
-    }
 
     public int getMacaquinhoImparId() {
         return macaquinhoImparId;

@@ -44,27 +44,22 @@ public class MacaquinhoManager
 
     public void lerArquivo(String caminhoArquivoComExtensao) throws FileNotFoundException
     {
-        // Lê o arquivo de entrada
         File file = new File(caminhoArquivoComExtensao);
         Scanner scanner = new Scanner(file);
-
         List<String> inputText = new ArrayList<>();
 
-
-        String linhaNumRodadas;
-        linhaNumRodadas = scanner.nextLine();
+        String linhaNumRodadas = scanner.nextLine();
         Pattern patternRodadas = Pattern.compile("\\d+");
         Matcher matcherRodadas = patternRodadas.matcher(linhaNumRodadas);
         numRodadas = Integer.parseInt(matcherRodadas.find() ? matcherRodadas.group() : "0");
         System.out.println("Rodadas: " + numRodadas);
-
 
         while (scanner.hasNext())
         {
             inputText.add(scanner.nextLine());
         }
 
-        List<Coco> cocos = new ArrayList<>(20);
+            List<Boolean> cocos = new LinkedList<>();
         for (String linha : inputText)
         {
             Pattern pattern = Pattern.compile("\\d+");
@@ -75,21 +70,25 @@ public class MacaquinhoManager
             int idMacaquinhoImpar = Integer.parseInt(matcher.find() ? matcher.group() : "0");
             int numCocos = Integer.parseInt(matcher.find() ? matcher.group() : "0");
 
+
             for (int i = 0; i < numCocos; i++) {
-                cocos.add(new Coco(Integer.parseInt(matcher.find() ? matcher.group() : "0")));
+                int numPedrinhas = Integer.parseInt(matcher.find() ? matcher.group() : "0");
+
+                if (numPedrinhas % 2 == 0)
+                    cocos.add(Boolean.TRUE);
+                else
+                    cocos.add(Boolean.FALSE);
             }
 
             System.out.println("Macaquinho " + idMacaco + " distribui " + numCocos + " cocos entre macaquinho " + idMacaquinhoPar + " e macaquinho " + idMacaquinhoImpar);
-            macaquinhos.add(new Macaquinho(Utils.clone(cocos), idMacaco, idMacaquinhoPar, idMacaquinhoImpar));
+            macaquinhos.add(new Macaquinho(new ArrayList<>(cocos), idMacaco, idMacaquinhoPar, idMacaquinhoImpar));
             cocos.clear();
-
         }
         for (Macaquinho macaquinho: macaquinhos)
         {
             macaquinho.setMacaquinhoPar(getMacaquinhoById(macaquinho.getMacaquinhoParId()));
             macaquinho.setMacaquinhoImpar(getMacaquinhoById(macaquinho.getMacaquinhoImparId()));
         }
-
     }
         public Macaquinho getVencedor()
         {
