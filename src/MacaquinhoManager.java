@@ -28,7 +28,7 @@ public class MacaquinhoManager
         return null;
     }
 
-    public void distribuirCocos()
+     public void distribuirCocos()
     {
         int size = macaquinhos.size();
         for (int i = 0; i < size; i++) {
@@ -36,6 +36,10 @@ public class MacaquinhoManager
             macaquinho.jogarCocos();
         }
     }
+
+
+
+
 
 
     public void lerArquivo(String caminhoArquivoComExtensao) throws FileNotFoundException
