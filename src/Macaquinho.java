@@ -1,12 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Macaquinho
 {
 
-    private int numCocos;
-
-    private List<Boolean> cocos;
+    int cocosPares;
+    int cocosImpares;
 
     private final int macaquinhoId;
     private Macaquinho macaquinhoPar;
@@ -15,40 +11,37 @@ public class Macaquinho
     private int macaquinhoImparId;
 
 
-    public Macaquinho(List<Boolean> cocos, int macaquinhoId, int macaquinhoParId, int macaquinhoImparId)
+    public Macaquinho(int cocosPares, int cocosImpares, int macaquinhoId, int macaquinhoParId, int macaquinhoImparId)
     {
-        this.cocos = cocos;
+        this.cocosPares = cocosPares;
+        this.cocosImpares = cocosImpares;
         this.macaquinhoId = macaquinhoId;
         this.macaquinhoParId = macaquinhoParId;
         this.macaquinhoImparId = macaquinhoImparId;
     }
 
-    public void receberCoco(Boolean coco)
+    public void receberCocoPar(int cocos)
     {
-        cocos.add(coco);
+        cocosPares += cocos;
+    }
+
+    public void receberCocoImpar(int cocos)
+    {
+        cocosImpares += cocos;
     }
 
     public void jogarCocos()
     {
-        int size = cocos.size();
-        Boolean choice;
-        for (int i = 0; i < size; i++)
-        {
-            choice = cocos.get(i);
+        macaquinhoPar.receberCocoPar(cocosPares);
+        macaquinhoImpar.receberCocoImpar(cocosImpares);
 
-            if (choice) {
-                macaquinhoPar.receberCoco(choice);
-            } else
-            {
-                macaquinhoImpar.receberCoco(choice);
-            }
-        }
-        cocos.clear();
+        this.cocosPares = 0;
+        this.cocosImpares = 0;
     }
 
     public int getNumCocos()
     {
-        return cocos.size();
+        return cocosImpares+cocosPares;
     }
 
     public int getMacaquinhoId()

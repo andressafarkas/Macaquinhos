@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -37,11 +36,6 @@ public class MacaquinhoManager
         }
     }
 
-
-
-
-
-
     public void lerArquivo(String caminhoArquivoComExtensao) throws FileNotFoundException
     {
         File file = new File(caminhoArquivoComExtensao);
@@ -59,7 +53,6 @@ public class MacaquinhoManager
             inputText.add(scanner.nextLine());
         }
 
-            List<Boolean> cocos = new LinkedList<>();
         for (String linha : inputText)
         {
             Pattern pattern = Pattern.compile("\\d+");
@@ -70,25 +63,30 @@ public class MacaquinhoManager
             int idMacaquinhoImpar = Integer.parseInt(matcher.find() ? matcher.group() : "0");
             int numCocos = Integer.parseInt(matcher.find() ? matcher.group() : "0");
 
+            int cocosPares = 0;
+            int cocosImpares = 0;
 
-            for (int i = 0; i < numCocos; i++) {
+            for (int i = 0; i < numCocos; i++)
+            {
                 int numPedrinhas = Integer.parseInt(matcher.find() ? matcher.group() : "0");
 
                 if (numPedrinhas % 2 == 0)
-                    cocos.add(Boolean.TRUE);
+                    cocosPares++;
                 else
-                    cocos.add(Boolean.FALSE);
+                    cocosImpares++;
             }
 
             System.out.println("Macaquinho " + idMacaco + " distribui " + numCocos + " cocos entre macaquinho " + idMacaquinhoPar + " e macaquinho " + idMacaquinhoImpar);
-            macaquinhos.add(new Macaquinho(new ArrayList<>(cocos), idMacaco, idMacaquinhoPar, idMacaquinhoImpar));
-            cocos.clear();
+            macaquinhos.add(new Macaquinho(cocosPares, cocosImpares, idMacaco, idMacaquinhoPar, idMacaquinhoImpar));
+
         }
         for (Macaquinho macaquinho: macaquinhos)
         {
             macaquinho.setMacaquinhoPar(getMacaquinhoById(macaquinho.getMacaquinhoParId()));
             macaquinho.setMacaquinhoImpar(getMacaquinhoById(macaquinho.getMacaquinhoImparId()));
         }
+
+        System.out.println("Arquivo lido com sucesso!");
     }
         public Macaquinho getVencedor()
         {
@@ -98,10 +96,5 @@ public class MacaquinhoManager
     public int getNumRodadas()
     {
         return numRodadas;
-    }
-
-    public List<Macaquinho> getMacaquinhos()
-    {
-        return macaquinhos;
     }
 }
